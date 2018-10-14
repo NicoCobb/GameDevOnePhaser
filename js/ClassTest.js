@@ -1,6 +1,6 @@
 //ClassTest Class
 
-function ClassTest(name,spriteName,posX,posY,game){
+function ClassTest(name,spriteName,posX,posY){
     this.name = name;
     this.spritetName = spriteName;
     this.posX = posX;
