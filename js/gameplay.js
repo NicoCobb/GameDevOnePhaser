@@ -31,8 +31,12 @@ gameplayState.prototype.render = function(){
 };
 
 gameplayState.prototype.RecipeListener = function(){
-    this.counter++;
-    this.recipebookDebug.text.text = "You clicked " + this.counter + " times!";
+    let txt = "testing text.";
+    this.tempBubble = new RecipeBubbleClass(1000,350,txt,this);
+};
+
+gameplayState.prototype.RecipeBubbleDestroyer = function(){
+    this.tempBubble.destroyAll();
 };
 
 
