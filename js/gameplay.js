@@ -7,19 +7,23 @@ let gameplayState = function(){
 
 gameplayState.prototype.create = function(){
     this.counter = 0
-    game.add.sprite(0,0,"main_background");
+    
+    this.background = game.add.sprite(0,0,"main_background");
+    this.background.inputEnabled = true;
+    this.background.events.onInputDown.add(this.inventoryDisappear,this);
+    
+    game.add.sprite(0,0,"sidebar");
     this.workplace = game.add.sprite(0,0,"workplace");
     this.recipebookDebug = new RecipeClass(75,775,this);
-    //this.textTest = game.add.sprite(375,775,"recipebook");
-     //  Moves the image anchor to the middle, so it centers inside the game properly
-    //this.textTest.anchor.set(0.5);
+    
+    this.inventoryIcon = game.add.sprite(250,250,"inventory_icon");
+    this.inventoryIcon.anchor.set(0.5)
+    this.inventoryIcon.inputEnabled = true;
+    this.inventoryIcon.events.onInputDown.add(this.inventoryAppear, this);
+    
 
-    //  Enables all kind of input actions on this image (click, etc)
-    //this.textTest.inputEnabled = true;
-
-    //this.text = game.add.text(250, 16, '', { fill: '#ffffff' });
-
-    //this.textTest.events.onInputDown.add(this.listener, this);
+    this.inventoryArray = new Array();
+    this.inventoryArray.push(new InventoryClass(500,500,"cutting_board",this));
 };
 
 gameplayState.prototype.update = function(){
@@ -30,14 +34,30 @@ gameplayState.prototype.render = function(){
     game.debug.spriteInfo(this.recipebookDebug.spriteDebug(), 32,32);
 };
 
-gameplayState.prototype.RecipeListener = function(){
+gameplayState.prototype.recipeListener = function(){
     let txt = "testing text.";
     this.tempBubble = new RecipeBubbleClass(1000,350,txt,this);
 };
 
-gameplayState.prototype.RecipeBubbleDestroyer = function(){
+gameplayState.prototype.recipeBubbleDestroyer = function(){
     this.tempBubble.destroyAll();
 };
+
+gameplayState.prototype.inventoryAppear = function(){
+    for(i = 0; i < this.inventoryArray.length;i++){
+        this.inventoryArray[i].appear();
+    }
+    
+};
+
+gameplayState.prototype.inventoryDisappear = function(){
+    for(i = 0; i < this.inventoryArray.length;i++){
+        this.inventoryArray[i].disappear();
+    }
+
+};
+
+
 
 
 //can add other functions too

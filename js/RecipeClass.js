@@ -8,7 +8,7 @@ function RecipeClass(posX,posY,gameState){
     this.sprite = game.add.sprite(posX,posY,"recipebook");
     this.sprite.anchor.set(0.5);
     this.sprite.inputEnabled = true;
-    this.sprite.events.onInputDown.add(gameState.RecipeListener, gameState);
+    this.sprite.events.onInputDown.add(gameState.recipeListener, gameState);
 };
 
 RecipeClass.prototype.spriteDebug = function(){
