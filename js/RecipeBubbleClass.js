@@ -11,7 +11,7 @@ function RecipeBubbleClass(posX,posY,txt,gameState){
     
     this.exit.anchor.set(0.5);
     this.exit.inputEnabled = true;
-    this.exit.events.onInputDown.add(gameState.recipeBubbleDestroyer, gameState);
+    this.exit.events.onInputDown.add(gameState.recipeBubbleDestroyer, this.gameState);
 };
 
 RecipeBubbleClass.prototype.destroyAll = function(){
