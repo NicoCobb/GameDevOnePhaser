@@ -13,8 +13,14 @@ function InventoryClass(posX,posY,name,gameState){
 
 InventoryClass.prototype.appear = function(){
     this.sprite = game.add.sprite(this.posX,this.posY,this.name);
+    this.sprite.inputEnabled = true;
+    this.sprite.anchor.set(0.5);
+    let callback = function() {this.gameState.inventoryListener(this.name);};
+    this.sprite.events.onInputDown.add(callback, this);
+    
 };
 
 InventoryClass.prototype.disappear = function(){
     this.sprite.destroy();
+    
 };
