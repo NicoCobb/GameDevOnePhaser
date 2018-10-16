@@ -8,11 +8,16 @@ let gameplayState = function(){
 //game runs here
 gameplayState.prototype.create = function(){
     this.counter = 0
-    
+    this.cookingToolsArray = new Array();
     this.background = game.add.sprite(0,0,"main_background");
-    this.background.events.onInputDown.add(this.inventoryDisappear,this);
+    // this.background.events.onInputDown.add(this.inventoryDisappear,this,1);
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
+    this.bowl = new CookingToolsClass(925,700,"stirring_bowl",this);
+    let tempArray = ["apple", "sugar"];
+    
+    this.bowl.addPartRecipe(tempArray);
+    this.cookingToolsArray.push(this.bowl);
     
     
     this.recipebookDebug = new RecipeClass(525,900,this);
@@ -53,23 +58,27 @@ gameplayState.prototype.inventoryAppear = function(){
     for(i = 0; i < this.inventoryArray.length;i++){
         this.inventoryArray[i].appear();
     }
-    this.inventoryIcon.inputEnabled = false;
-    this.background.inputEnabled = true;
+    this.inventoryIcon.events.onInputDown.removeAll();
+    this.inventoryIcon.events.onInputDown.add(this.inventoryDisappear, this);
+    // this.inventoryIcon.inputEnabled = false;
+    // this.background.inputEnabled = true;
 };
 
 gameplayState.prototype.inventoryDisappear = function(){
     for(i = 0; i < this.inventoryArray.length;i++){
         this.inventoryArray[i].disappear();
     }
-    this.inventoryIcon.inputEnabled = true;
-    this.background.inputEnabled = false;
+    this.inventoryIcon.events.onInputDown.removeAll();
+    this.inventoryIcon.events.onInputDown.add(this.inventoryAppear, this);
+    // this.inventoryIcon.inputEnabled = true;
+    // this.background.inputEnabled = false;
 };
 
 gameplayState.prototype.addInventory = function(nameArray){
     if(nameArray.length < 0){
         alert("WARNING: negative length array");
     }
-    if(nameArray.length == 0){
+    if(nameArray.length === 0){
         alert("WARNING: zero length array");
     }
     let startingPosX = 450;
@@ -81,8 +90,9 @@ gameplayState.prototype.addInventory = function(nameArray){
 };
 
 gameplayState.prototype.inventoryListener = function(name) {
-    alert("you clicked:"+ name);
+    
 };
+
 
 
 
