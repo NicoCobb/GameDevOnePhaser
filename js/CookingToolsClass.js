@@ -10,3 +10,7 @@ function CookingToolsClass(posX,posY,name,gameState){
     this.tag = "CookingTools";
 
 };
+
+CookingToolsClass.prototype.addPartRecipe = function(recipeArray){
+
+};
