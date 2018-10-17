@@ -17,6 +17,8 @@ preloadState.prototype.preload = function(){
     game.load.image("dialoguebox_customer", "assets/art/dialoguebox_customer.png");
     game.load.image("dialoguebox_owner", "assets/art/dialoguebox_owner.png");
     game.load.image("dough", "assets/art/dough.png");
+    game.load.image("end_credits", "assets/art/end_credits.png");
+    game.load.image("end_photo", "assets/art/end_photo.png");
     game.load.image("exit_button", "assets/art/exit_button.png");
     game.load.image("flour", "assets/art/flour.png");
     game.load.image("inventory_bar", "assets/art/inventory_bar.png");
@@ -26,6 +28,8 @@ preloadState.prototype.preload = function(){
     game.load.image("main_background", "assets/art/main_background.png");
     game.load.image("maria", "assets/art/maria.png");
     game.load.image("michael", "assets/art/michael.png");
+    game.load.image("name_maria", "assets/art/name_maria.png");
+    game.load.image("name_patrick", "assets/art/name_patrick.png");
     game.load.image("open_book", "assets/art/open_book.png");
     game.load.image("photo1", "assets/art/photo1.png");
     game.load.image("photo2", "assets/art/photo2.png");

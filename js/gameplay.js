@@ -20,7 +20,7 @@ gameplayState.prototype.create = function(){
     this.background = game.add.sprite(0,0,"main_background");
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
-    game.add.sprite(650, 755, "stove");
+    game.add.sprite(650, 760, "stove");
     this.recipebookDebug = new RecipeClass(525,900,this);
     this.inventoryIcon = game.add.sprite(1270,50,"inventory_icon");
     this.inventoryIcon.anchor.set(0.5);

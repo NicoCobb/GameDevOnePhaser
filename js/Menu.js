@@ -8,10 +8,6 @@ menuState.prototype.create = function(){
     game.add.button(game.world.centerX+360, game.world.centerY+210, "exit_button", this.end_game, this);
 };
 
-menuState.prototype.update = function(){
-
-};
-
 menuState.prototype.start_opening = function(){
     game.state.start("Opening");
 };
