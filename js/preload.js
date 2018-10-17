@@ -41,6 +41,7 @@ preloadState.prototype.preload = function(){
     game.load.image("title", "assets/art/title.png");
     game.load.image("water", "assets/art/water.png");
     game.load.image("workplace", "assets/art/workplace.png");
+    
      
  
 };

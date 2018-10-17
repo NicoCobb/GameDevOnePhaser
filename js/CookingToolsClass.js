@@ -6,17 +6,31 @@ function CookingToolsClass(posX,posY,name,gameState){
     this.posY = posY;
     this.name = name;
     this.gameState = gameState;
-    //add tag for convenience
-    this.tag = "CookingTools";
+
     this.recipeArray = new Array();
-    this.sprite = game.add.sprite(posX,posY,name);
-    
+    this.sprite = game.add.sprite(this.posX,this.posY,this.name);
+    this.sprite.anchor.set(0.5);
+    let callback = function(){gameState.cookingToolsListener(this);}
+    this.sprite.events.onInputDown.add(callback, this);
+
 };
 
 CookingToolsClass.prototype.addPartRecipe = function(recipeArray){
     //recipeArray should be an array which contains strings of names
     this.recipeArray = recipeArray;
 };
+
+
+CookingToolsClass.prototype.clearRecipe = function(){
+    this.recipeArray = [];
+};
+
+CookingToolsClass.prototype.checkFullInventory = function(){
+    if (this.recipeArray.length === 0){
+        
+    }
+};
+
 
 CookingToolsClass.prototype.checkRecipe = function(inventoryName){
     alert("working")
@@ -33,13 +47,10 @@ CookingToolsClass.prototype.checkRecipe = function(inventoryName){
     return false;
 };
 
-CookingToolsClass.prototype.clearRecipe = function(){
-    this.recipeArray = [];
+CookingToolsClass.prototype.enableInput = function(){
+    this.sprite.inputEnabled = true;
 };
 
-CookingToolsClass.prototype.checkFullInventory = function(){
-    if (this.recipeArray.length === 0){
-        
-    }
-};
-
+CookingToolsClass.prototype.disableInput = function(){
+    this.sprite.inputEnabled = false;
+}

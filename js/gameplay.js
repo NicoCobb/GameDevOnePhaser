@@ -13,12 +13,9 @@ gameplayState.prototype.create = function(){
     // this.background.events.onInputDown.add(this.inventoryDisappear,this,1);
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
-    this.bowl = new CookingToolsClass(925,700,"stirring_bowl",this);
+    this.bowl = new CookingToolsClass(1300,900,"stirring_bowl",this);
     let tempArray = ["apple", "sugar"];
-    
     this.bowl.addPartRecipe(tempArray);
-    this.cookingToolsArray.push(this.bowl);
-    
     
     this.recipebookDebug = new RecipeClass(525,900,this);
     
@@ -90,10 +87,15 @@ gameplayState.prototype.addInventory = function(nameArray){
 };
 
 gameplayState.prototype.inventoryListener = function(name) {
-    
+    this.tempName = name;
+    this.bowl.enableInput();
 };
 
-
+gameplayState.prototype.cookingToolsListener = function(obj) {
+    let result = obj.checkRecipe(this.tempName);
+    this.bowl.disableInput();
+    alert(result);
+};
 
 
 
