@@ -21,7 +21,7 @@ gameplayState.prototype.create = function(){
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
     game.add.sprite(650, 760, "stove");
-    this.recipebookDebug = new RecipeClass(525,900,this);
+    this.recipebookDebug = new RecipeBook(525,900,this);
     this.inventoryIcon = game.add.sprite(1270,50,"inventory_icon");
     this.inventoryIcon.anchor.set(0.5);
     this.inventoryIcon.inputEnabled = true;
@@ -105,7 +105,7 @@ gameplayState.prototype.inventoryDisappear = function(){
     // this.background.inputEnabled = false;
 };
 
-gameplayState.prototype.addInventory = function(nameArray,isInteractable){
+gameplayState.prototype.addInventory = function(nameArray,isInteractable = false){
     if(nameArray.length < 0){
         alert("WARNING: negative length array");
     }

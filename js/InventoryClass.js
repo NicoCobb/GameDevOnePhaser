@@ -47,8 +47,9 @@ InventoryClass.prototype.dragStop = function(sprite, pointer, dragX, dragY, snap
     for(i = 0; i < this.toolsGroup.length; i++) {
         if(this.toolsGroup[i].sprite.getBounds().contains(pointer.x, pointer.y))
             this.toolsGroup[i].checkRecipe(this.name);
-        
     }
     this.sprite.x = this.posX;
     this.sprite.y = this.posY;
+    // if (this.destroyAfterUse)
+    //     this.disappear();
 }

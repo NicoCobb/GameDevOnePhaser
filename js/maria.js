@@ -41,7 +41,7 @@ mariaState.prototype.create = function(){
 
 mariaState.prototype.display_customer_dialogue = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("Ending");
+        game.state.start("Game");
     }
     if(this.j !== 0){
         this.dialoguebox_customer.destroy();

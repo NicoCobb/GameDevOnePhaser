@@ -46,6 +46,7 @@ CookingToolsClass.prototype.checkFullInventory = function(){
         //console.log(this.gameState.inventoryNameArray);
         this.gameState.inventoryDisappear();
         this.gameState.inventoryArray = this.gameState.addInventory(this.gameState.inventoryNameArray);
+        this.gameState.inventoryArrayInteractable = this.gameState.addInventory(this.gameState.inventoryNameArray, true);
         
         
     }
