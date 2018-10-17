@@ -32,29 +32,37 @@ InventoryClass.prototype.appear = function(){
 
 InventoryClass.prototype.disappear = function(){
     this.sprite.destroy();
-    
 };
 
 InventoryClass.prototype.dragStart = function(){
     this.sprite.alpha = 1;
-    console.log("obj name:" + this.name);
-    console.log(this.gameState.tempName);
 }
 
 InventoryClass.prototype.dragStop = function(sprite, pointer, dragX, dragY, snapPoint) {
     this.sprite.alpha = 0.5;
-    var isAdded = false;
+    isAdded = false;
+    // console.log("toolsGroup size: " + this.toolsGroup.length);
+    // console.log("current recipe targets: " + this.gameState.currentRecipeStep.ingredientsRequired);
     //check to see if we are above one of the cooking items
-    for(i = 0; i < this.toolsGroup.length; i++) {
-        if(this.toolsGroup[i].sprite.getBounds().contains(pointer.x, pointer.y))
-            isAdded = this.gameState.currentRecipeStep.addIngredient(this.name, toolsGroup[i].name);
+    for(j = 0; j < this.toolsGroup.length; j++) {
+        if(this.toolsGroup[j].sprite.getBounds().contains(pointer.x, pointer.y))
+            isAdded = this.gameState.currentRecipeStep.addIngredient(this.name, this.toolsGroup[j]);
             //this.toolsGroup[i].checkRecipe(this.name);
     }
 
+    this.ifAdded(isAdded);
+
+    this.sprite.x = this.posX;
+    this.sprite.y = this.posY;
+    if (this.destroyAfterUse)
+        this.disappear();
+}
+
+InventoryClass.prototype.ifAdded = function(isAdded) {
     if(isAdded) {
         if(this.gameState.currentRecipeStep.allIngredients()) { //if this is true, the step is complete
             console.log("Recipe step complete!");
-            this.gameState.playAnimation(this.gameState.animatedSteps[this.gameState.currentRecipeStep]);
+            this.gameState.playAnimation();
             this.gameState.currentRecipeStep.swapSprite();
             this.gameState.checkRecipe();
             this.gameState.currentRecipeStep = this.gameState.currentRecipe.nextStep();
@@ -63,9 +71,4 @@ InventoryClass.prototype.dragStop = function(sprite, pointer, dragX, dragY, snap
             console.log("ingredient added!");
         }
     }
-
-    this.sprite.x = this.posX;
-    this.sprite.y = this.posY;
-    // if (this.destroyAfterUse)
-    //     this.disappear();
 }

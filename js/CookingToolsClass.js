@@ -9,20 +9,20 @@ function CookingToolsClass(posX,posY,name,gameState){
     //name of the final item, once the animation is complete
     // this.final_item;
     this.gameState = gameState;
-    this.heldItem = null;
-    this.baseSpriteName = null;
+    this.heldItem = "n";
+    this.killSprite = false;
 
     // this.recipeArray = new Array();
     this.sprite = game.add.sprite(this.posX,this.posY,this.name);
     this.sprite.anchor.set(0.5);
-    this.callback = function(){gameState.cookingToolsListener(this);}
     this.sprite.inputEnabled = true;
     this.sprite.events.onInputDown.add(this.onInputDown, this);
 
 };
 
-CookingToolsClass.prototype.receiveHeldItem = function(itemName) {
+CookingToolsClass.prototype.receiveHeldItem = function(itemName, kill = false) {
     this.heldItem = itemName;
+    this.killSprite = kill;
 }
 
 CookingToolsClass.prototype.onInputDown = function() {
@@ -31,6 +31,7 @@ CookingToolsClass.prototype.onInputDown = function() {
         return false;
     }
     else {
+        console.log("putting item into inventory");
         this.gameState.inventoryNameArray.push(this.heldItem);
         //console.log(this.gameState.inventoryNameArray);
         this.gameState.inventoryDisappear();
@@ -44,8 +45,16 @@ CookingToolsClass.prototype.onInputDown = function() {
 }
 
 CookingToolsClass.prototype.resetSprite = function() {
-    this.sprite.destroy();
-    this.sprite = game.add.sprite(this.posX,this.posY,this.name);
+    if(!this.killSprite) {
+        this.sprite.destroy();
+        this.sprite = game.add.sprite(this.posX,this.posY,this.name);
+        this.sprite.anchor.set(0.5);
+        this.sprite.inputEnabled = true;
+        this.sprite.events.onInputDown.add(this.onInputDown, this);
+    } else {
+        this.sprite.destroy();
+    }
+
 }
 
 // CookingToolsClass.prototype.addPartRecipe = function(recipeArray, finname, animeName, outputName){

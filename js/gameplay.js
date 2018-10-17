@@ -2,9 +2,6 @@
 
 var level = 0;
 let gameplayState = function(){
-    //5 is the index of the last member of initial inventories
-    //all the inventories after this should be one-time used
-    let counter = 5;
     
 };
 
@@ -12,6 +9,7 @@ let gameplayState = function(){
 gameplayState.prototype.create = function(){
     this.bowlRecipeArray = [["flour", "sugar", "salt", "water"],["dough", "apple"]];
     
+    this.oneTimeUseAfterNum = 0; //gets set per recipe
     //these objects are the same in all levels
     this.music=game.add.audio("theme");
     this.music.play();
@@ -20,7 +18,8 @@ gameplayState.prototype.create = function(){
     this.background = game.add.sprite(0,0,"main_background");
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
-    this.stove = new CookingToolsClass(650, 760, "stove", this);
+    //game.add.sprite(650, 760, "stove");
+    this.stove = new CookingToolsClass(985, 946, "stove", this);
     this.recipebookDebug = new RecipeBook(525,900,this);
     this.inventoryIcon = game.add.sprite(1270,50,"inventory_icon");
     this.inventoryIcon.anchor.set(0.5);
@@ -32,16 +31,18 @@ gameplayState.prototype.create = function(){
     this.cookingToolsGroup.push(this.stove);
     this.inventoryNameArray = [];
     this.currentRecipe;
-    this.currentRecipeStep = 0;
+    this.currentRecipeStep;
+    this.recipeStepCount = 0;
     this.animatedSteps = [];
     //these objects vary per level
     console.log(level);
     switch(level) {
         case 0: //pie level
-            this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
-            this.pot = new CookingToolsClass(1145,810,"pot_e",this);
-            this.cuttingBoard = new CookingToolsClass(1800,800,"cutting_board",this);
-            this.piePlate = new CookingToolsClass(2100, 810, "pieplate", this);
+            this.oneTimeUseAfterNum = 6; //gets set per recipe
+            this.bowl = new CookingToolsClass(1430,860,"stirring_bowl",this);
+            this.pot = new CookingToolsClass(1140,820,"pot_e",this);
+            this.cuttingBoard = new CookingToolsClass(1850,870,"cutting_board",this);
+            this.piePlate = new CookingToolsClass(2250, 900, "pieplate", this);
             this.cookingToolsGroup.push(this.bowl);
             this.cookingToolsGroup.push(this.pot);
             this.cookingToolsGroup.push(this.cuttingBoard);
@@ -60,12 +61,12 @@ gameplayState.prototype.create = function(){
             recipeSteps.push(stepFour);
             //possible extra step in here if there is time to add a mixing action
             //split this one into smaller steps to show all the art?
-            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"]);
+            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_fill"]);
             recipeSteps.push(stepThree);
             //possible extra step in here if there is time to add a slicing action
-            var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "cutting_board_apples");
+            var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "cutting_board_apples", "apple_chunks");
             recipeSteps.push(stepTwo);
-            var stepOne = new RecipeStep(this.bowl, ["butter, flower, water"], "dough_no_mix");
+            var stepOne = new RecipeStep(this.bowl, ["butter","flour","water"], "dough_no_mix", "dough");
             recipeSteps.push(stepOne);
             
             this.currentRecipe = new Recipe(recipeSteps);
@@ -152,7 +153,7 @@ gameplayState.prototype.addInventory = function(nameArray,isInteractable = false
     let startingPosX = 552;
     let returnArray = new Array();
     for(i = 0; i < nameArray.length; i++){
-        if(i <= 5){
+        if(i <= this.oneTimeUseAfterNum){
             returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, false, this.cookingToolsGroup));
         }else{
             returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, true, this.cookingToolsGroup));
@@ -162,15 +163,16 @@ gameplayState.prototype.addInventory = function(nameArray,isInteractable = false
     return returnArray;
 };
 
-gameplayState.prototype.playAnimation = function(animeName) {
-    if(animeName === "n") return; //if there is no animation
-    let temp = game.add.sprite(1500,0,3);
-    let anim = temp.animations.add(animeName);
+gameplayState.prototype.playAnimation = function() {
+    if(this.animatedSteps[this.recipeStepCount] === "n")
+        return; //if there is no animation
+    var temp = game.add.sprite(1500,0,this.animatedSteps[this.recipeStepCount]);
+    temp.bringToTop();
+    let anim = temp.animations.add(this.animatedSteps[this.recipeStepCount]);
     anim.play(2,false,true);
 }
 
 gameplayState.prototype.inventoryListener = function(obj) {
-    console.log("inventoryListener obj name: " + obj.name);
     this.tempName = obj.name;
     // this.bowl.enableInput();
     // console.log(this.tempName);
