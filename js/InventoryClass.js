@@ -49,7 +49,7 @@ InventoryClass.prototype.dragStop = function(sprite, pointer, dragX, dragY, snap
             isAdded = this.gameState.currentRecipeStep.addIngredient(this.name, this.toolsGroup[j]);
             //this.toolsGroup[i].checkRecipe(this.name);
     }
-
+    this.gameState.inventoryDisappear();
     this.ifAdded(isAdded);
 
     this.sprite.x = this.posX;
@@ -61,7 +61,6 @@ InventoryClass.prototype.dragStop = function(sprite, pointer, dragX, dragY, snap
             }
          }
     }
-    this.gameState.inventoryDisappear();
     this.gameState.inventoryArray = this.gameState.addInventory(this.gameState.inventoryNameArray);
     this.gameState.inventoryArrayInteractable = this.gameState.addInventory(this.gameState.inventoryNameArray, true);
     this.gameState.inventoryAppear();
@@ -72,7 +71,9 @@ InventoryClass.prototype.ifAdded = function(isAdded) {
     if(isAdded) {
         if(this.gameState.currentRecipeStep.allIngredients()) { //if this is true, the step is complete
             console.log("Recipe step complete!");
+            
             this.gameState.playAnimation();
+            
             this.gameState.currentRecipeStep.swapSprite();
             this.gameState.checkRecipe();
             this.gameState.currentRecipeStep = this.gameState.currentRecipe.nextStep();

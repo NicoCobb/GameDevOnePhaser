@@ -167,9 +167,9 @@ gameplayState.prototype.playAnimation = function() {
     if(this.animatedSteps[this.recipeStepCount] === "n")
         return; //if there is no animation
     var temp = game.add.sprite(1500,0,this.animatedSteps[this.recipeStepCount]);
-    temp.bringToTop();
     this.inventoryBar.moveDown();
-    let anim = temp.animations.add(this.animatedSteps[this.recipeStepCount]);
+    var anim = temp.animations.add(this.animatedSteps[this.recipeStepCount]);
+    temp.bringToTop();
     anim.play(2,false,true);
     this.recipeStepCount++;
 }
