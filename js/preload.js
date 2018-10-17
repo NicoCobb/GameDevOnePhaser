@@ -7,7 +7,6 @@ let preloadState = function(){
 preloadState.prototype.preload = function(){
     //game.load.image("name", "filepath")
     //game.load.spritesheet("name", "filepath", x, y)
-    game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
     game.load.image("apple", "assets/art/apple.png");
     game.load.image("big_side_bar", "assets/art/big_side_bar.png");
     game.load.image("boil_apple", "assets/art/boil_apple.png");
@@ -28,6 +27,8 @@ preloadState.prototype.preload = function(){
     game.load.image("maria", "assets/art/maria.png");
     game.load.image("michael", "assets/art/michael.png");
     game.load.image("open_book", "assets/art/open_book.png");
+    game.load.image("photo1", "assets/art/photo1.png");
+    game.load.image("photo2", "assets/art/photo2.png");
     game.load.image("pieplate", "assets/art/pieplate.png");
     game.load.image("pieplate_dough","assets/art/pieplate_dough.png");
     game.load.image("pieplate_fills", "assets/art/pieplate_fills.png");
@@ -42,6 +43,7 @@ preloadState.prototype.preload = function(){
     game.load.image("stove", "assets/art/stove.png");
     game.load.image("sugar", "assets/art/sugar.png");
     game.load.image("title", "assets/art/title.png");
+    game.load.image("turn_page_icon", "assets/art/turn_page_icon.png");
     game.load.image("water", "assets/art/water.png");
     game.load.image("workplace", "assets/art/workplace.png");
      
