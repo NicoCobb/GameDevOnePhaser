@@ -1,6 +1,6 @@
 Lizzy intro:
 L: Excuse me! Mister apple man! Are you there!?
-P: Yes I'm here. Is that little lizzy outside my window?
+P: Yes I'm here. Is that little Lizzy outside my window?
 L: You bet it is! My ma and pa sent me over to buy some apple stuff. 
 P: What kind of apple stuff? There's a lot of different apple stuff you know. 
 S: Sauce stuff. 
@@ -11,8 +11,8 @@ S: two.
 P: Alright, two jars of applesauce coming right up. 
 
 1:
-L: Hey, mister? Is there anything different aout your applesauce? Cus I really like the ones in the plastic cups from stores. 
-P: Well, mine tastes like candy because of how sweet the applesI use are. It also doesn't use as much sugar. 
+L: Hey, mister? Is there anything different about your applesauce? Cause I really like the ones in the plastic cups from stores. 
+P: Well, mine tastes like candy because of how sweet the apples I use are. It also doesn't use as much sugar. 
 L: What? Why would less sugar make it taste better? More sugar makes everything better. 
 P: Not necessarily. It's more that the apples taste really good, so they don't need as much sugar.
 L: That's not a thing. You can always add more sugar. 
@@ -21,7 +21,7 @@ L: Yeah it does!
 P: .......You know what it does. But I can only put so much in this recipe. If I put more in, it will explode. 
 L: Really! That sounds cool! Do it!
 P: My house would burn down, and then you can't get more applesauce.
-L: Oh yeah. Okay, I give you official permission to use les sugar. 
+L: Oh yeah. Okay, I give you official permission to use less sugar. 
 P: Thank you, You're very kind. 
 
 2:
@@ -30,7 +30,7 @@ P: No, I have some trees in my backyard.
 L: Why would that help you get apples?
 P: They're apple trees. I pick all of my apples from them. 
 L: Wait, you have trees that grow apples? Can I go pick some?
-P: Mabye later, when I'm done making the applesauce. 
+P: Maybe later, when I'm done making the applesauce. 
 L: Alright, it's a deal. You better not back out now!
 P: Wouldn't dream of it. 
 
@@ -39,7 +39,7 @@ L: Are you almost done? You've been taking a long time.
 P: Making food isn't a simple quick process. 
 L: Why not? Why does it take so long? 
 P: Because the apples need to soften up in the water, which takes some time. 
-L: Okay, but why does it take so much time. 
+L: Okay, but why does it take so much time? 
 P: It just does. 
 L: That's not a good answer. 
 P: Well, I'm a farmer. I don't have all the answers. I'm no scientist. 
