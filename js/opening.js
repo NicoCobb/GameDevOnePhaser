@@ -18,11 +18,11 @@ openingState.prototype.create = function(){
         "some have taken an interest in what makes his pies so good. ", "yOU ARE FUCKED UP", "YOU ARE SUPER FUCKED UP"];
     this.opening_image = ["photo1", "photo2", "photo3"];
 
-    this.display_text(0);
-    this.open_book.events.onInputDown.add(this.display_text, this);
+    this.display(0);
+    this.open_book.events.onInputDown.add(this.display, this);
 };
 
-openingState.prototype.display_text = function(){
+openingState.prototype.display = function(){
     if(this.counter !== 0) {
         this.page_text.destroy();
         this.page_image.destroy();

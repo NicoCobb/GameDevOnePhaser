@@ -55,7 +55,7 @@ b_manState.prototype.create = function(){
 
 b_manState.prototype.display_customer_dialogue = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("Game");
+        game.state.start("Ending");
     }
     if(this.j !== 0){
         this.dialoguebox_customer.destroy();
@@ -85,7 +85,7 @@ b_manState.prototype.display_customer_dialogue = function(i){
 
 b_manState.prototype.display_owner_dialogue  = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("Game");
+        game.state.start("Ending");
     }
     if(this.j !== 0) {
         this.dialoguebox_owner.destroy();

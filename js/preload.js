@@ -76,7 +76,7 @@ preloadState.prototype.preload = function(){
 };
 
 preloadState.prototype.create = function(){
-	game.state.start("Maria_1");
+	game.state.start("Menu");
 	
 };
 
