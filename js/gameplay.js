@@ -73,12 +73,23 @@ gameplayState.prototype.render = function(){
 };
 
 gameplayState.prototype.recipeListener = function(){
-    let txt = "testing text.";
-    this.tempBubble = new RecipeBubbleClass(1000,350,txt,this);
+    this.recipebookDebug.disableInput();
+    this.tempBubble = new RecipeBubbleClass(800,250,this);
 };
 
 gameplayState.prototype.recipeBubbleDestroyer = function(){
+    this.recipebookDebug.enableInput();
     this.tempBubble.destroyAll();
+};
+
+gameplayState.prototype.recipebookTurnPage = function(para){
+    if (para === 0){
+        this.tempBubble.replaceBubble("apple_pie_recipe2");
+        this.tempBubble.resetCallback(para);
+    }else{
+        this.tempBubble.replaceBubble("apple_pie_recipe1");
+        this.tempBubble.resetCallback(para);
+    }
 };
 
 gameplayState.prototype.inventoryAppear = function(){

@@ -15,3 +15,11 @@ RecipeBook.prototype.spriteDebug = function(){
     return this.sprite;
 };
 
+RecipeBook.prototype.disableInput = function(){
+    this.sprite.events.onInputDown.removeAll();
+};
+
+RecipeBook.prototype.enableInput = function(){
+    this.sprite.events.onInputDown.add(this.gameState.recipeListener, this.gameState)
+}
+
