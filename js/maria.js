@@ -40,7 +40,7 @@ mariaState.prototype.create = function(){
 
 mariaState.prototype.display_customer_dialogue = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("Game");
+        game.state.start("Ending");
     }
     if(this.j !== 0){
         this.dialoguebox_customer.destroy();
@@ -50,8 +50,7 @@ mariaState.prototype.display_customer_dialogue = function(i){
 
     let text = this.dialogue_text[i][this.j];
     this.customer_text = game.add.text(580, 240, text, {
-        font: "45px Courier", fill: "#000000", fontWeight: "bold", wordWrap: true, wordWrapWidth: 450,
-    });
+        font: "45px Courier", fill: "#000000", fontWeight: "bold", wordWrap: true, wordWrapWidth: 450});
     this.customer_text.lineSpacing = 10;
     this.j++;
     if (this.j > this.dialogue_text[i].length){
@@ -68,7 +67,7 @@ mariaState.prototype.display_customer_dialogue = function(i){
 
 mariaState.prototype.display_owner_dialogue  = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("Game");
+        game.state.start("Ending");
     }
     if(this.j !== 0) {
         this.dialoguebox_owner.destroy();
@@ -78,8 +77,7 @@ mariaState.prototype.display_owner_dialogue  = function(i){
 
     let text = this.dialogue_text[i][this.j];
     this.owner_text = game.add.text(game.world.centerX+550, 230, text, {
-        font: "45px Courier", fill: "#000000", fontWeight: "bold", wordWrap: true, wordWrapWidth: 450,
-    });
+        font: "45px Courier", fill: "#000000", fontWeight: "bold", wordWrap: true, wordWrapWidth: 450});
     this.owner_text.lineSpacing = 10;
     this.j++;
     if(this.j > this.dialogue_text[i].length) {
@@ -92,8 +90,4 @@ mariaState.prototype.display_owner_dialogue  = function(i){
         this.workplace.events.onInputDown.add(this.helper_1, this);
         this.maria.events.onInputDown.add(this.helper_1, this);
     }
-};
-
-mariaState.prototype.start_game = function(){
-    game.state.start("Game");
 };

@@ -17,6 +17,8 @@ preloadState.prototype.preload = function(){
     game.load.image("dialoguebox_customer", "assets/art/dialoguebox_customer.png");
     game.load.image("dialoguebox_owner", "assets/art/dialoguebox_owner.png");
     game.load.image("dough", "assets/art/dough.png");
+    game.load.image("end_credits", "assets/art/end_credits.png");
+    game.load.image("end_photo", "assets/art/end_photo.png");
     game.load.image("exit_button", "assets/art/exit_button.png");
     game.load.image("flour", "assets/art/flour.png");
     game.load.image("inventory_bar", "assets/art/inventory_bar.png");

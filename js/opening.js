@@ -15,15 +15,11 @@ openingState.prototype.create = function(){
         "\nThey grew gravenstein apples in a small orchard, one of the last in the U.S.",
         "Now, Patrick works to keep up the recipes of his family and keep the trees healthy, " +
         "but after bring one of his family's famous apple pies to a bake sale, " +
-        "some have taken an interest in what makes his pies so good. ", "yOU ARE FUCKED UP", "YOU ARE SUPER FUCKED UP"]
-    this.opening_image = ["photo1", "photo2", "photo3"]
+        "some have taken an interest in what makes his pies so good. ", "yOU ARE FUCKED UP", "YOU ARE SUPER FUCKED UP"];
+    this.opening_image = ["photo1", "photo2", "photo3"];
 
     this.display_text(0);
     this.open_book.events.onInputDown.add(this.display_text, this);
-};
-
-openingState.prototype.update = function(){
-
 };
 
 openingState.prototype.display_text = function(){
@@ -32,8 +28,8 @@ openingState.prototype.display_text = function(){
         this.page_image.destroy();
     }
     let text = this.opening_text[this.counter];
-    this.page_text = game.add.text(game.world.centerX+60, 125, text, {font: "60px Courier", fill: "#000000",
-        fontWeight: "bold", wordWrap: true, wordWrapWidth: 800, lineSpacing: 10});
+    this.page_text = game.add.text(game.world.centerX+60, 125, text, {
+        font: "60px Courier", fill: "#000000", fontWeight: "bold", wordWrap: true, wordWrapWidth: 800});
     this.page_text.lineSpacing = 10;
 
     let image = this.opening_image[this.counter];
