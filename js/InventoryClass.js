@@ -1,11 +1,12 @@
 //Inventory Class constructer
 
-function InventoryClass(posX,posY,name,gameState){
+function InventoryClass(posX,posY,name,gameState,animationName){
     //store the values and references
     this.posX = posX;
     this.posY = posY;
     this.name = name;
     this.gameState = gameState;
+    this.animationname = animationName;
     //add tag for convenience
     this.tag = "Inventory";
 

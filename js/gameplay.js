@@ -99,7 +99,8 @@ gameplayState.prototype.inventoryListener = function(name) {
 
 gameplayState.prototype.cookingToolsListener = function(obj) {
     let result = obj.checkRecipe(this.tempName);
-    this.bowl.disableInput();
+    obj.disableInput();
+    
     alert(result);
 };
 
