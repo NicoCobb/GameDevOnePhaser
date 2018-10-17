@@ -62,6 +62,7 @@ preloadState.prototype.preload = function(){
     game.load.image("workplace", "assets/art/workplace.png");
     game.load.image("pot_e", "assets/art/pot_empty.png");
     game.load.image("stirring_bowl_fills_before_mixing", "assets/art/stirring_bowl_fills_before_mixing.png");
+    game.load.image("stirring_bowl_fills_after_mixing", "assets/art/stirring_bowl_fills_after_mixing.png");
     game.load.audio("theme", "assets/music/music_apple.mp3");
     game.load.spritesheet("mix_dough_animation", "assets/art/mix_dough.png",1026, 1125);
     game.load.spritesheet("mix_apple_fills_animation", "assets/art/mix_apple_fills.png", 1026,1125);
@@ -72,7 +73,7 @@ preloadState.prototype.preload = function(){
 };
 
 preloadState.prototype.create = function(){
-	game.state.start("Maria");
+	game.state.start("Menu");
 	
 };
 

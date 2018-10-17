@@ -67,6 +67,9 @@ InventoryClass.prototype.ifAdded = function(isAdded) {
             this.gameState.checkRecipe();
             this.gameState.currentRecipeStep = this.gameState.currentRecipe.nextStep();
             //recipeStep handles giving the cookingTool a held item
+
+            if(this.gameState.recipeStepCount >1 )
+                this.gameState.inventoryNameArray.pop();
         } else {
             console.log("ingredient added!");
         }

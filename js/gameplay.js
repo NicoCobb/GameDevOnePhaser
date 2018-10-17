@@ -38,7 +38,7 @@ gameplayState.prototype.create = function(){
     console.log(level);
     switch(level) {
         case 0: //pie level
-            this.oneTimeUseAfterNum = 8; //gets set per recipe
+            this.oneTimeUseAfterNum = 15; //gets set per recipe
             this.bowl = new CookingToolsClass(1430,860,"stirring_bowl",this);
             this.pot = new CookingToolsClass(1140,820,"pot_e",this);
             this.cuttingBoard = new CookingToolsClass(1850,870,"cutting_board",this);
@@ -61,7 +61,7 @@ gameplayState.prototype.create = function(){
             recipeSteps.push(stepFour);
             //possible extra step in here if there is time to add a mixing action
             //split this one into smaller steps to show all the art?
-            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"], "apple_fills");
+            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"],"stirring_bowl_fills_after_mixing", "apple_fills");
             recipeSteps.push(stepThree);
             //possible extra step in here if there is time to add a slicing action
             var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "cutting_board_apples", "apple_chunks");
