@@ -20,7 +20,7 @@ gameplayState.prototype.create = function(){
     this.pot = new CookingToolsClass(1145,810,"pot_e",this);
     let tempArray = ["apple", "sugar"];
     let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
-    this.bowl.addPartRecipe(tempArray, "dough_no_mix");
+    this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation");
     //this.bowl.addPartRecipe(tempArray);
     
     this.recipebookDebug = new RecipeClass(525,900,this);

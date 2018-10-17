@@ -34,6 +34,10 @@ CookingToolsClass.prototype.checkFullInventory = function(){
         this.sprite.destroy();
         this.sprite=game.add.sprite(this.posX,this.posY,this.final_item);
         this.sprite.anchor.set(0.5);
+        alert("working");
+        let temp = game.add.sprite(1500,0,this.animeName);
+        let anim = temp.animations.add(this.animeName);
+        anim.play(1,false,true);
     }
 };
 

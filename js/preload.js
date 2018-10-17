@@ -25,7 +25,6 @@ preloadState.prototype.preload = function(){
     game.load.image("main_background", "assets/art/main_background.png");
     game.load.image("maria", "assets/art/maria.png");
     game.load.image("michael", "assets/art/michael.png");
-    game.load.spritesheet("mix_apple_fills", "assets/art/mix_apple_fills.png", 1026,1125);
     game.load.image("pieplate", "assets/art/pieplate.png");
     game.load.image("pieplate_dough","assets/art/pieplate_dough.png");
     game.load.image("pieplate_fills", "assets/art/pieplate_fills.png");
@@ -46,8 +45,8 @@ preloadState.prototype.preload = function(){
     game.load.image("dough_no_mix", "assets/art/dough_no_mix.png");
     game.load.image("stirring_bowl_fills_before_mixing", "assets/art/stirring_bowl_fills_before_mixing.png");
     game.load.audio("theme", "assets/music/music_apple.mp3");
-    game.load.spritesheet("mix_dough_anime", "assets/art/mix_dough.png", 1026,1125);
-     
+    game.load.spritesheet("mix_dough_animation", "assets/art/mix_dough.png",1026, 1125);
+    game.load.spritesheet("mix_apple_fills_animation", "assets/art/mix_apple_fills.png", 1026,1125);
  
 };
 
