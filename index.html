@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="js/phaser.min.js"></script>
 	<script type="text/javascript" src="js/preload.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
+	<script type="text/javascript" src="js/opening.js"></script>
 	<script type="text/javascript" src="js/gameplay.js"></script>
 	<script type="text/javascript" src="js/ClassTest.js"></script>
 	<script type="text/javascript" src="js/RecipeClass.js"></script>
@@ -27,7 +28,9 @@
 
 	game.state.add("Preload", preloadState);
     game.state.add("Menu", menuState);
+    game.state.add("Opening", openingState);
 	game.state.add("Game", gameplayState);
+
 	game.state.start("Preload");
 
 </script>
