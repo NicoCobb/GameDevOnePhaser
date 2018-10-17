@@ -44,9 +44,11 @@ mariaState.prototype.display_customer_dialogue = function(i){
     }
     if(this.j !== 0){
         this.dialoguebox_customer.destroy();
+        this.customer_name.destroy();
         this.customer_text.destroy();
     }
     this.dialoguebox_customer = game.add.sprite(450, 100, "dialoguebox_customer");
+    this.customer_name = game.add.sprite(460, 130, "name_maria");
 
     let text = this.dialogue_text[i][this.j];
     this.customer_text = game.add.text(580, 240, text, {
@@ -55,6 +57,7 @@ mariaState.prototype.display_customer_dialogue = function(i){
     this.j++;
     if (this.j > this.dialogue_text[i].length){
         this.dialoguebox_customer.destroy();
+        this.customer_name.destroy();
         this.customer_text.destroy();
         this.workplace.events.onInputDown.removeAll();
         this.maria.events.onInputDown.removeAll();
@@ -71,17 +74,20 @@ mariaState.prototype.display_owner_dialogue  = function(i){
     }
     if(this.j !== 0) {
         this.dialoguebox_owner.destroy();
+        this.customer_name.destroy();
         this.owner_text.destroy();
     }
     this.dialoguebox_owner = game.add.sprite(game.world.centerX+400, 85, "dialoguebox_owner");
+    this.customer_name = game.add.sprite(game.world.centerX+420, 130, "name_patrick");
 
     let text = this.dialogue_text[i][this.j];
-    this.owner_text = game.add.text(game.world.centerX+550, 230, text, {
+    this.owner_text = game.add.text(game.world.centerX+550, 240, text, {
         font: "45px Courier", fill: "#000000", fontWeight: "bold", wordWrap: true, wordWrapWidth: 450});
     this.owner_text.lineSpacing = 10;
     this.j++;
     if(this.j > this.dialogue_text[i].length) {
         this.dialoguebox_owner.destroy();
+        this.customer_name.destroy();
         this.owner_text.destroy();
         this.workplace.events.onInputDown.removeAll();
         this.maria.events.onInputDown.removeAll();
