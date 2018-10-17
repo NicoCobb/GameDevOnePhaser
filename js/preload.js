@@ -42,7 +42,9 @@ preloadState.prototype.preload = function(){
     game.load.image("water", "assets/art/water.png");
     game.load.image("workplace", "assets/art/workplace.png");
     game.load.image("pot_e", "assets/art/pot_empty.png");
-    
+    game.load.image("dough_no_mix", "assets/art/dough_no_mix.png");
+    game.load.image("stirring_bowl_fills_before_mixing", "assets/art/stirring_bowl_fills_before_mixing.png");
+    game.load.audio("theme", "assets/music/music_apple.mp3");
      
  
 };

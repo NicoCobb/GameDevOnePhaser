@@ -7,6 +7,8 @@ let gameplayState = function(){
 
 //game runs here
 gameplayState.prototype.create = function(){
+    this.music=game.add.audio("theme");
+    this.music.play();
     this.counter = 0
     this.cookingToolsArray = new Array();
     this.background = game.add.sprite(0,0,"main_background");
@@ -16,11 +18,10 @@ gameplayState.prototype.create = function(){
     game.add.sprite(650, 755, "stove");
     this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
     this.pot = new CookingToolsClass(1145,810,"pot_e",this);
-    
     let tempArray = ["apple", "sugar"];
     let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
-    this.bowl.addPartRecipe(tempArray);
-    this.bowl.addPartRecipe(tempArray);
+    this.bowl.addPartRecipe(tempArray, "dough_no_mix");
+    //this.bowl.addPartRecipe(tempArray);
     
     this.recipebookDebug = new RecipeClass(525,900,this);
     
@@ -37,7 +38,7 @@ gameplayState.prototype.create = function(){
 
 //update function
 gameplayState.prototype.update = function(){
-    
+   
 };
 
 
