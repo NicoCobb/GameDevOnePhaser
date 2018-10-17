@@ -38,7 +38,7 @@ gameplayState.prototype.create = function(){
     console.log(level);
     switch(level) {
         case 0: //pie level
-            this.oneTimeUseAfterNum = 6; //gets set per recipe
+            this.oneTimeUseAfterNum = 8; //gets set per recipe
             this.bowl = new CookingToolsClass(1430,860,"stirring_bowl",this);
             this.pot = new CookingToolsClass(1140,820,"pot_e",this);
             this.cuttingBoard = new CookingToolsClass(1850,870,"cutting_board",this);
@@ -61,7 +61,7 @@ gameplayState.prototype.create = function(){
             recipeSteps.push(stepFour);
             //possible extra step in here if there is time to add a mixing action
             //split this one into smaller steps to show all the art?
-            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_fill"]);
+            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"], "apple_fills");
             recipeSteps.push(stepThree);
             //possible extra step in here if there is time to add a slicing action
             var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "cutting_board_apples", "apple_chunks");
@@ -71,7 +71,7 @@ gameplayState.prototype.create = function(){
             
             this.currentRecipe = new Recipe(recipeSteps);
             this.currentRecipeStep = this.currentRecipe.nextStep();
-            this.animatedSteps = ["mix_dough_animation", "n", "mix_apple_fills_animation", "n", "n", "n", "n"]; //seven steps, size of seven
+            this.animatedSteps = ["mix_dough_animation", "cut_apple", "mix_apple_fills_animation", "n", "n", "n", "oven_baking"]; //seven steps, size of seven
             // let tempArray = ["flour", "sugar", "salt", "water"];
             // let tempArray2 = ["dough", "apple"];
             // let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
@@ -170,6 +170,7 @@ gameplayState.prototype.playAnimation = function() {
     temp.bringToTop();
     let anim = temp.animations.add(this.animatedSteps[this.recipeStepCount]);
     anim.play(2,false,true);
+    this.recipeStepCount++;
 }
 
 gameplayState.prototype.inventoryListener = function(obj) {
@@ -179,7 +180,8 @@ gameplayState.prototype.inventoryListener = function(obj) {
 };
 
 gameplayState.prototype.checkRecipe = function() {
-    if(this.currentRecipe.isRecipeComplete) {
+    console.log("is recipe complete: " + this.currentRecipe.isRecipeComplete);
+    if(this.currentRecipe.isRecipeComplete()) {
         if(level === 0) {
             level++;
             game.state.start("Joshua");

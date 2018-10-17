@@ -11,6 +11,7 @@ Recipe.prototype.nextStep = function() {
 };
 
 Recipe.prototype.isRecipeComplete = function() {
-    console.log(this.recipeStack);
-    return (this.recipeStack.length === 0);
+    if(this.recipeStack.length === 0)
+        return true;
+    return false;
 };

@@ -65,6 +65,9 @@ preloadState.prototype.preload = function(){
     game.load.audio("theme", "assets/music/music_apple.mp3");
     game.load.spritesheet("mix_dough_animation", "assets/art/mix_dough.png",1026, 1125);
     game.load.spritesheet("mix_apple_fills_animation", "assets/art/mix_apple_fills.png", 1026,1125);
+    game.load.spritesheet("cut_apple", "assets/art/cut_apple.png", 1026,1125);
+    game.load.spritesheet("oven_baking", "assets/art/oven_baking.png", 1026,1125);
+
  
 };
 
