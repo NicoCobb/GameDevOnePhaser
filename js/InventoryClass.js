@@ -43,11 +43,27 @@ InventoryClass.prototype.dragStart = function(){
 
 InventoryClass.prototype.dragStop = function(sprite, pointer, dragX, dragY, snapPoint) {
     this.sprite.alpha = 0.5;
+    var isAdded = false;
     //check to see if we are above one of the cooking items
     for(i = 0; i < this.toolsGroup.length; i++) {
         if(this.toolsGroup[i].sprite.getBounds().contains(pointer.x, pointer.y))
-            this.toolsGroup[i].checkRecipe(this.name);
+            isAdded = this.gameState.currentRecipeStep.addIngredient(this.name, toolsGroup[i].name);
+            //this.toolsGroup[i].checkRecipe(this.name);
     }
+
+    if(isAdded) {
+        if(this.gameState.currentRecipeStep.allIngredients()) { //if this is true, the step is complete
+            console.log("Recipe step complete!");
+            this.gameState.playAnimation(this.gameState.animatedSteps[this.gameState.currentRecipeStep]);
+            this.gameState.currentRecipeStep.swapSprite();
+            this.gameState.checkRecipe();
+            this.gameState.currentRecipeStep = this.gameState.currentRecipe.nextStep();
+            //recipeStep handles giving the cookingTool a held item
+        } else {
+            console.log("ingredient added!");
+        }
+    }
+
     this.sprite.x = this.posX;
     this.sprite.y = this.posY;
     // if (this.destroyAfterUse)

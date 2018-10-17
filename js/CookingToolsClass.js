@@ -21,26 +21,31 @@ function CookingToolsClass(posX,posY,name,gameState){
 
 };
 
-CookingToolsClass.prototype.giveHeldItem = function(itemName, baseSprite) {
+CookingToolsClass.prototype.receiveHeldItem = function(itemName) {
     this.heldItem = itemName;
-    this.baseSpriteName = baseSprite;
 }
 
 CookingToolsClass.prototype.onInputDown = function() {
-    if(this.heldItem === null) {
+    if(this.heldItem === "n") {
         console.log("no held item");
         return false;
     }
     else {
+        this.gameState.inventoryNameArray.push(this.heldItem);
+        //console.log(this.gameState.inventoryNameArray);
+        this.gameState.inventoryDisappear();
+        this.gameState.inventoryArray = this.gameState.addInventory(this.gameState.inventoryNameArray);
+        this.gameState.inventoryArrayInteractable = this.gameState.addInventory(this.gameState.inventoryNameArray, true);
+        this.gameState.inventoryAppear();
         this.heldItem = null;
-        this.swapSprite();
+        this.resetSprite();
         return true;
     }
 }
 
-CookingToolsClass.prototype.swapSprite = function() {
+CookingToolsClass.prototype.resetSprite = function() {
     this.sprite.destroy();
-    this.sprite = game.add.sprite(this.posX,this.posY,this.baseSpriteName);
+    this.sprite = game.add.sprite(this.posX,this.posY,this.name);
 }
 
 // CookingToolsClass.prototype.addPartRecipe = function(recipeArray, finname, animeName, outputName){

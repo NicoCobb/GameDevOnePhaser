@@ -1,6 +1,6 @@
 // gameplayState constructor
 
-var level = 1;
+var level = 0;
 let gameplayState = function(){
     //5 is the index of the last member of initial inventories
     //all the inventories after this should be one-time used
@@ -20,7 +20,7 @@ gameplayState.prototype.create = function(){
     this.background = game.add.sprite(0,0,"main_background");
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
-    game.add.sprite(650, 760, "stove");
+    this.stove = new CookingToolsClass(650, 760, "stove", this);
     this.recipebookDebug = new RecipeBook(525,900,this);
     this.inventoryIcon = game.add.sprite(1270,50,"inventory_icon");
     this.inventoryIcon.anchor.set(0.5);
@@ -29,11 +29,15 @@ gameplayState.prototype.create = function(){
 
     //populated variably
     this.cookingToolsGroup = [];
+    this.cookingToolsGroup.push(this.stove);
     this.inventoryNameArray = [];
+    this.currentRecipe;
+    this.currentRecipeStep = 0;
+    this.animatedSteps = [];
     //these objects vary per level
     console.log(level);
     switch(level) {
-        case 1: //pie level
+        case 0: //pie level
             this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
             this.pot = new CookingToolsClass(1145,810,"pot_e",this);
             this.cuttingBoard = new CookingToolsClass(1800,800,"cutting_board",this);
@@ -45,24 +49,34 @@ gameplayState.prototype.create = function(){
             this.inventoryNameArray = ["apple", "butter", "flour", "salt", "sugar","cinnamon", "water"];
 
             var recipeSteps = [];
-            var stepSeven = new RecipeStep()
+            //*NOTE* need to add in generated ingredients
+            var stepSeven = new RecipeStep(this.stove, ["pieplate_raw"], "delete");
+            recipeSteps.push(stepSeven);
             var stepSix = new RecipeStep(this.piePlate, ["dough"], "pieplate_raw");
-            var stepFive = new RecipeStep(this.piePlate, ["AHHHHHH***********************************"], "pieplate_fills");
+            recipeSteps.push(stepSix);
+            var stepFive = new RecipeStep(this.piePlate, ["apple_fills"] ,"pieplate_fills");
+            recipeSteps.push(stepFive);
             var stepFour = new RecipeStep(this.piePlate, ["dough"], "pieplate_dough");
+            recipeSteps.push(stepFour);
             //possible extra step in here if there is time to add a mixing action
             //split this one into smaller steps to show all the art?
             var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"]);
+            recipeSteps.push(stepThree);
             //possible extra step in here if there is time to add a slicing action
             var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "cutting_board_apples");
+            recipeSteps.push(stepTwo);
             var stepOne = new RecipeStep(this.bowl, ["butter, flower, water"], "dough_no_mix");
+            recipeSteps.push(stepOne);
             
-
+            this.currentRecipe = new Recipe(recipeSteps);
+            this.currentRecipeStep = this.currentRecipe.nextStep();
+            this.animatedSteps = ["mix_dough_animation", "n", "mix_apple_fills_animation", "n", "n", "n", "n"]; //seven steps, size of seven
             // let tempArray = ["flour", "sugar", "salt", "water"];
             // let tempArray2 = ["dough", "apple"];
             // let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
-            this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation","dough");
+            // this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation","dough");
             break;
-        case 0: //sauce level
+        case 1: //sauce level
             break;
         default:
             console.log("BROKE!!");
@@ -149,6 +163,7 @@ gameplayState.prototype.addInventory = function(nameArray,isInteractable = false
 };
 
 gameplayState.prototype.playAnimation = function(animeName) {
+    if(animeName === "n") return; //if there is no animation
     let temp = game.add.sprite(1500,0,3);
     let anim = temp.animations.add(animeName);
     anim.play(2,false,true);
@@ -160,6 +175,22 @@ gameplayState.prototype.inventoryListener = function(obj) {
     // this.bowl.enableInput();
     // console.log(this.tempName);
 };
+
+gameplayState.prototype.checkRecipe = function() {
+    if(this.currentRecipe.isRecipeComplete) {
+        if(level === 0) {
+            level++;
+            game.state.start("Joshua");
+        }
+        else if (level === 1) {
+            level++;
+            game.state.start("Ending");
+        } else {
+            console.log("SOMETHING WENT WRONG!!");
+            game.state.start("Menu");
+        }
+    }
+}
 
 // gameplayState.prototype.cookingToolsListener = function(obj) {
 //     let result = obj.checkRecipe(this.tempName);

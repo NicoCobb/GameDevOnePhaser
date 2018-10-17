@@ -8,7 +8,8 @@ preloadState.prototype.preload = function(){
     //game.load.image("name", "filepath")
     //game.load.spritesheet("name", "filepath", x, y)
     game.load.image("apple", "assets/art/apple.png");
-    game.load.image("apple_chunks", "apple_chunks_small.png");
+    game.load.image("apple_chunks", "assets/art/apple_chunks_small.png");
+    game.load.image("apple_fills", "assets/art/applefills.png");
     game.load.image("apple_pie_recipe1", "assets/art/apple_pie_recipe1.png");
     game.load.image("apple_pie_recipe2", "assets/art/apple_pie_recipe2.png");
     game.load.image("apple_sauce_recipe", "assets/art/apple_sauce_recipe.png")
@@ -19,7 +20,7 @@ preloadState.prototype.preload = function(){
     game.load.image("cinnamon", "assets/art/cinnamon.png");
     game.load.image("close_icon", "assets/art/close_icon.png");
     game.load.image("cutting_board", "assets/art/cutting_board.png");
-    game.load.image("cutting_board_apples", "assets/art/cutting_board_with_chunks.png")
+    game.load.image("cutting_board_apples", "assets/art/cutting_board _with_chunks.png")
     game.load.image("dialoguebox_customer", "assets/art/dialoguebox_customer.png");
     game.load.image("dialoguebox_owner", "assets/art/dialoguebox_owner.png");
     game.load.image("dough", "assets/art/dough.png");
