@@ -13,7 +13,7 @@ function CookingToolsClass(posX,posY,name,gameState){
     this.sprite = game.add.sprite(this.posX,this.posY,this.name);
     this.sprite.anchor.set(0.5);
     this.callback = function(){gameState.cookingToolsListener(this);}
-    this.sprite.events.onInputDown.add(this.callback, this);
+    // this.sprite.events.onInputUp.add(this.callback, this);
 
 };
 

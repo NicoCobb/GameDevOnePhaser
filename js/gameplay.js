@@ -1,5 +1,6 @@
 // gameplayState constructor
 
+var level = 1;
 let gameplayState = function(){
     //5 is the index of the last member of initial inventories
     //all the inventories after this should be one-time used
@@ -11,36 +12,52 @@ let gameplayState = function(){
 gameplayState.prototype.create = function(){
     this.bowlRecipeArray = [["flour", "sugar", "salt", "water"],["dough", "apple"]];
     
+    //these objects are the same in all levels
     this.music=game.add.audio("theme");
     this.music.play();
-    this.counter = 0
+    this.counter = 0;
     this.cookingToolsArray = new Array();
     this.background = game.add.sprite(0,0,"main_background");
-    // this.background.events.onInputDown.add(this.inventoryDisappear,this,1);
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
     game.add.sprite(650, 755, "stove");
-    this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
-    this.pot = new CookingToolsClass(1145,810,"pot_e",this);
-    let tempArray = ["flour", "sugar", "salt", "water"];
-    let tempArray2 = ["dough", "apple"];
-    let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
-    this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation","dough");
-    //this.bowl.addPartRecipe(tempArray);
-    
     this.recipebookDebug = new RecipeClass(525,900,this);
-    
     this.inventoryIcon = game.add.sprite(1270,50,"inventory_icon");
     this.inventoryIcon.anchor.set(0.5);
     this.inventoryIcon.inputEnabled = true;
     this.inventoryIcon.events.onInputDown.add(this.inventoryAppear, this);
+
+    //populated variably
+    this.cookingToolsGroup = [];
+    this.inventoryNameArray = [];
+    //these objects vary per level
+    console.log(level);
+    switch(level) {
+        case 1: //pie level
+            this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
+            this.pot = new CookingToolsClass(1145,810,"pot_e",this);
+            this.bowl.enableInput();
+            this.pot.enableInput();
+            this.cookingToolsGroup.push(this.bowl);
+            this.cookingToolsGroup.push(this.pot);
+            this.inventoryNameArray = ["apple", "butter", "flour", "salt", "sugar", "water"];
+
+            let tempArray = ["flour", "sugar", "salt", "water"];
+            let tempArray2 = ["dough", "apple"];
+            let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
+            this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation","dough");
+            break;
+        case 0: //sauce level
+            break;
+        default:
+            console.log("BROKE!!");
+    }
     
     //there are two inventories now
     //the first one is uninteractable and is just used to display the sprites
     //the second one is the interactable layer that actually gets dragged
-    this.inventoryNameArray = ["apple", "butter", "flour", "salt", "sugar", "water"];
-    this.inventoryArray = this.addInventory(this.inventoryNameArray, false);
-    this.inventoryArrayInteractable = this.addInventory(this.inventoryNameArray, true);
+    this.inventoryArray = this.addInventory(this.inventoryNameArray, false, this.cookingToolsGroup);
+    this.inventoryArrayInteractable = this.addInventory(this.inventoryNameArray, true, this.cookingToolsGroup);
 };
 
 //update function
@@ -99,9 +116,9 @@ gameplayState.prototype.addInventory = function(nameArray,isInteractable){
     let returnArray = new Array();
     for(i = 0; i < nameArray.length; i++){
         if(i <= 5){
-            returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, false));
+            returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, false, this.cookingToolsGroup));
         }else{
-            returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, true));
+            returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, true, this.cookingToolsGroup));
         }
         
     }
@@ -109,13 +126,16 @@ gameplayState.prototype.addInventory = function(nameArray,isInteractable){
 };
 
 gameplayState.prototype.inventoryListener = function(obj) {
+    console.log("inventoryListener obj name: " + obj.name);
     this.tempName = obj.name;
-    this.bowl.enableInput();
+    // this.bowl.enableInput();
+    // console.log(this.tempName);
 };
 
 gameplayState.prototype.cookingToolsListener = function(obj) {
+    console.log("input up registered");
     let result = obj.checkRecipe(this.tempName);
-    obj.disableInput();
+    // obj.disableInput();
     
     alert(result);
 };
