@@ -54,8 +54,18 @@ InventoryClass.prototype.dragStop = function(sprite, pointer, dragX, dragY, snap
 
     this.sprite.x = this.posX;
     this.sprite.y = this.posY;
-    if (this.destroyAfterUse)
-        this.disappear();
+    if (this.destroyAfterUse) {
+        for( var i = 0; i < this.gameState.inventoryNameArray.length-1; i++){ 
+            if ( this.gameState.inventoryNameArray[i] === this.name) {
+              arr.splice(i, 1); 
+            }
+         }
+    }
+    this.gameState.inventoryDisappear();
+    this.gameState.inventoryArray = this.gameState.addInventory(this.gameState.inventoryNameArray);
+    this.gameState.inventoryArrayInteractable = this.gameState.addInventory(this.gameState.inventoryNameArray, true);
+    this.gameState.inventoryAppear();
+        
 }
 
 InventoryClass.prototype.ifAdded = function(isAdded) {

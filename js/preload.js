@@ -36,7 +36,9 @@ preloadState.prototype.preload = function(){
     game.load.image("main_background", "assets/art/main_background.png");
     game.load.image("maria", "assets/art/maria.png");
     game.load.image("michael", "assets/art/michael.png");
+    game.load.image("name_businessman", "assets/art/name_businessman.png");
     game.load.image("name_maria", "assets/art/name_maria.png");
+    game.load.image("name_joshua", "assets/art/name_joshua.png");
     game.load.image("name_patrick", "assets/art/name_patrick.png");
     game.load.image("open_book", "assets/art/open_book.png");
     game.load.image("photo1", "assets/art/photo1.png");
@@ -53,6 +55,8 @@ preloadState.prototype.preload = function(){
     game.load.image("salt", "assets/art/salt.png");
     game.load.image("sidebar","assets/art/sidebar.png");
     game.load.image("stirring_bowl", "assets/art/stirring_bowl.png");
+    game.load.image("stirring_bowl_fills_after_mixing", "assets/art/stirring_bowl_fills_after_mixing.png");
+    game.load.image("stirring_bowl_fills_before_mixing", "assets/art/stirring_bowl_fills_before_mixing.png");
     game.load.image("stove", "assets/art/stove.png");
     game.load.image("sugar", "assets/art/sugar.png");
     game.load.image("title", "assets/art/title.png");
@@ -61,7 +65,7 @@ preloadState.prototype.preload = function(){
     game.load.image("water", "assets/art/water.png");
     game.load.image("workplace", "assets/art/workplace.png");
     game.load.image("pot_e", "assets/art/pot_empty.png");
-    game.load.image("stirring_bowl_fills_before_mixing", "assets/art/stirring_bowl_fills_before_mixing.png");
+
     game.load.audio("theme", "assets/music/music_apple.mp3");
     game.load.spritesheet("mix_dough_animation", "assets/art/mix_dough.png",1026, 1125);
     game.load.spritesheet("mix_apple_fills_animation", "assets/art/mix_apple_fills.png", 1026,1125);
@@ -72,7 +76,7 @@ preloadState.prototype.preload = function(){
 };
 
 preloadState.prototype.create = function(){
-	game.state.start("Maria");
+	game.state.start("Maria_1");
 	
 };
 

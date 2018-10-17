@@ -7,7 +7,7 @@ let gameplayState = function(){
 
 //game runs here
 gameplayState.prototype.create = function(){
-    this.bowlRecipeArray = [["flour", "sugar", "salt", "water"],["dough", "apple"]];
+    this.bowlRecipeArray = [["flour", "butter", "water"],["dough", "apple"]];
     
     this.oneTimeUseAfterNum = 0; //gets set per recipe
     //these objects are the same in all levels
@@ -20,7 +20,7 @@ gameplayState.prototype.create = function(){
     game.add.sprite(0,0,"sidebar");
     //game.add.sprite(650, 760, "stove");
     this.stove = new CookingToolsClass(985, 946, "stove", this);
-    this.recipebookDebug = new RecipeBook(525,900,this);
+    this.recipebookDebug = new RecipeBook(300, game.world.centerY+160, this);
     this.inventoryIcon = game.add.sprite(1270,50,"inventory_icon");
     this.inventoryIcon.anchor.set(0.5);
     this.inventoryIcon.inputEnabled = true;
@@ -38,7 +38,7 @@ gameplayState.prototype.create = function(){
     console.log(level);
     switch(level) {
         case 0: //pie level
-            this.oneTimeUseAfterNum = 8; //gets set per recipe
+            this.oneTimeUseAfterNum = 7; //gets set per recipe
             this.bowl = new CookingToolsClass(1430,860,"stirring_bowl",this);
             this.pot = new CookingToolsClass(1140,820,"pot_e",this);
             this.cuttingBoard = new CookingToolsClass(1850,870,"cutting_board",this);
@@ -61,7 +61,7 @@ gameplayState.prototype.create = function(){
             recipeSteps.push(stepFour);
             //possible extra step in here if there is time to add a mixing action
             //split this one into smaller steps to show all the art?
-            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"], "apple_fills");
+            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"], "stirring_bowl_fills_after_mixing", "apple_fills");
             recipeSteps.push(stepThree);
             //possible extra step in here if there is time to add a slicing action
             var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "cutting_board_apples", "apple_chunks");
@@ -101,7 +101,7 @@ gameplayState.prototype.render = function(){
 
 gameplayState.prototype.recipeListener = function(){
     this.recipebookDebug.disableInput();
-    this.tempBubble = new RecipeBubbleClass(800,250,this);
+    this.tempBubble = new RecipeBubbleClass(game.world.centerX+150,　game.world.centerY,　this);
 };
 
 gameplayState.prototype.recipeBubbleDestroyer = function(){
@@ -168,6 +168,7 @@ gameplayState.prototype.playAnimation = function() {
         return; //if there is no animation
     var temp = game.add.sprite(1500,0,this.animatedSteps[this.recipeStepCount]);
     temp.bringToTop();
+    this.inventoryBar.moveDown();
     let anim = temp.animations.add(this.animatedSteps[this.recipeStepCount]);
     anim.play(2,false,true);
     this.recipeStepCount++;
