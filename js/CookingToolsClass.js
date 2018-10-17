@@ -13,6 +13,7 @@ function CookingToolsClass(posX,posY,name,gameState){
     this.sprite = game.add.sprite(this.posX,this.posY,this.name);
     this.sprite.anchor.set(0.5);
     this.callback = function(){gameState.cookingToolsListener(this);}
+    this.sprite.inputEnabled = true;
     // this.sprite.events.onInputUp.add(this.callback, this);
 
 };
@@ -75,10 +76,10 @@ CookingToolsClass.prototype.checkRecipe = function(inventoryName){
     return false;
 };
 
-CookingToolsClass.prototype.enableInput = function(){
-    this.sprite.inputEnabled = true;
-};
+// CookingToolsClass.prototype.enableInput = function(){
+//     this.sprite.inputEnabled = true;
+// };
 
-CookingToolsClass.prototype.disableInput = function(){
-    this.sprite.inputEnabled = false;
-}
+// CookingToolsClass.prototype.disableInput = function(){
+//     this.sprite.inputEnabled = false;
+// }

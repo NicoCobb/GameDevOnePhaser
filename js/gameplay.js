@@ -36,15 +36,26 @@ gameplayState.prototype.create = function(){
         case 1: //pie level
             this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
             this.pot = new CookingToolsClass(1145,810,"pot_e",this);
-            this.bowl.enableInput();
-            this.pot.enableInput();
+            this.cuttingBoard = new CookingToolsClass(1800,800,"cutting_board",this);
+            this.piePlate = new CookingToolsClass(2100, 810, "pieplate", this);
             this.cookingToolsGroup.push(this.bowl);
             this.cookingToolsGroup.push(this.pot);
-            this.inventoryNameArray = ["apple", "butter", "flour", "salt", "sugar", "water"];
+            this.cookingToolsGroup.push(this.cuttingBoard);
+            this.cookingToolsGroup.push(this.piePlate);
+            this.inventoryNameArray = ["apple", "butter", "flour", "salt", "sugar","cinnamon", "water"];
 
-            let tempArray = ["flour", "sugar", "salt", "water"];
-            let tempArray2 = ["dough", "apple"];
-            let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
+            var recipeSteps = [];
+            var stepFour = new RecipeStep(this.piePlate, ["dough"], "pieplate_dough");
+            //possible extra step in here if there is time to add a mixing action
+            var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"]);
+            //possible extra step in here if there is time to add a slicing action
+            var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "");
+            var stepOne = new RecipeStep(this.bowl, ["butter, flower, water"], "dough_no_mix");
+            
+
+            // let tempArray = ["flour", "sugar", "salt", "water"];
+            // let tempArray2 = ["dough", "apple"];
+            // let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
             this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation","dough");
             break;
         case 0: //sauce level
@@ -53,9 +64,6 @@ gameplayState.prototype.create = function(){
             console.log("BROKE!!");
     }
     
-    //there are two inventories now
-    //the first one is uninteractable and is just used to display the sprites
-    //the second one is the interactable layer that actually gets dragged
     this.inventoryArray = this.addInventory(this.inventoryNameArray, false, this.cookingToolsGroup);
     this.inventoryArrayInteractable = this.addInventory(this.inventoryNameArray, true, this.cookingToolsGroup);
 };

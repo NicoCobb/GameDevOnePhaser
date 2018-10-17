@@ -8,15 +8,18 @@ preloadState.prototype.preload = function(){
     //game.load.image("name", "filepath")
     //game.load.spritesheet("name", "filepath", x, y)
     game.load.image("apple", "assets/art/apple.png");
+    game.load.image("apple_chunks", "apple_chunks_small.png");
     game.load.image("big_side_bar", "assets/art/big_side_bar.png");
     game.load.image("boil_apple", "assets/art/boil_apple.png");
     game.load.image("business_man","assets/art/business_man.png");
     game.load.image("butter", "assets/art/butter.png");
+    game.load.image("cinnamon", "assets/art/cinnamon.png");
     game.load.image("close_icon", "assets/art/close_icon.png");
     game.load.image("cutting_board", "assets/art/cutting_board.png");
     game.load.image("dialoguebox_customer", "assets/art/dialoguebox_customer.png");
     game.load.image("dialoguebox_owner", "assets/art/dialoguebox_owner.png");
     game.load.image("dough", "assets/art/dough.png");
+    game.load.image("dough_no_mix", "assets/art/dough_no_mix.png");
     game.load.image("end_credits", "assets/art/end_credits.png");
     game.load.image("end_photo", "assets/art/end_photo.png");
     game.load.image("exit_button", "assets/art/exit_button.png");
@@ -52,7 +55,6 @@ preloadState.prototype.preload = function(){
     game.load.image("water", "assets/art/water.png");
     game.load.image("workplace", "assets/art/workplace.png");
     game.load.image("pot_e", "assets/art/pot_empty.png");
-    game.load.image("dough_no_mix", "assets/art/dough_no_mix.png");
     game.load.image("stirring_bowl_fills_before_mixing", "assets/art/stirring_bowl_fills_before_mixing.png");
     game.load.audio("theme", "assets/music/music_apple.mp3");
     game.load.spritesheet("mix_dough_animation", "assets/art/mix_dough.png",1026, 1125);
