@@ -46,5 +46,5 @@ openingState.prototype.display = function(){
 };
 
 openingState.prototype.start_game = function(){
-    game.state.start("Maria_1");
+    game.state.start("Joshua_1");
 };

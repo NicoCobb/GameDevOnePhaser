@@ -40,7 +40,7 @@ mariaState_2.prototype.create = function(){
 
 mariaState_2.prototype.display_customer_dialogue = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("Joshua_1");
+        game.state.start("B_man");
     }
     if(this.j !== 0){
         this.dialoguebox_customer.destroy();
@@ -70,7 +70,7 @@ mariaState_2.prototype.display_customer_dialogue = function(i){
 
 mariaState_2.prototype.display_owner_dialogue  = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("Joshua_1");
+        game.state.start("B_man");
     }
     if(this.j !== 0) {
         this.dialoguebox_owner.destroy();

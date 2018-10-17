@@ -39,7 +39,7 @@ joshuaState_2.prototype.create = function(){
 
 joshuaState_2.prototype.display_customer_dialogue = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("B_man");
+        game.state.start("Maria_1");
     }
     if(this.j !== 0){
         this.dialoguebox_customer.destroy();
@@ -69,7 +69,7 @@ joshuaState_2.prototype.display_customer_dialogue = function(i){
 
 joshuaState_2.prototype.display_owner_dialogue  = function(i){
     if(this.i === this.dialogue_text.length){
-        game.state.start("B_man");
+        game.state.start("Maria_2");
     }
     if(this.j !== 0) {
         this.dialoguebox_owner.destroy();
