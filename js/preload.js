@@ -25,6 +25,7 @@ preloadState.prototype.preload = function(){
     game.load.image("main_background", "assets/art/main_background.png");
     game.load.image("maria", "assets/art/maria.png");
     game.load.image("michael", "assets/art/michael.png");
+    game.load.spritesheet("mix_apple_fills", "assets/art/mix_apple_fills.png", 1026,1125);
     game.load.image("pieplate", "assets/art/pieplate.png");
     game.load.image("pieplate_dough","assets/art/pieplate_dough.png");
     game.load.image("pieplate_fills", "assets/art/pieplate_fills.png");
