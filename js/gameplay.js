@@ -30,10 +30,12 @@ gameplayState.prototype.create = function(){
     this.inventoryIcon.inputEnabled = true;
     this.inventoryIcon.events.onInputDown.add(this.inventoryAppear, this);
     
-    
+    //there are two inventories now
+    //the first one is uninteractable and is just used to display the sprites
+    //the second one is the interactable layer that actually gets dragged
     this.inventoryNameArray = ["apple", "butter", "flour", "salt", "sugar", "water"];
-    //this.inventoryArray.push(new InventoryClass(500,500,"cutting_board",this));
-    this.inventoryArray = this.addInventory(this.inventoryNameArray);
+    this.inventoryArray = this.addInventory(this.inventoryNameArray, false);
+    this.inventoryArrayInteractable = this.addInventory(this.inventoryNameArray, true);
 };
 
 //update function
@@ -60,6 +62,7 @@ gameplayState.prototype.recipeBubbleDestroyer = function(){
 gameplayState.prototype.inventoryAppear = function(){
     for(i = 0; i < this.inventoryArray.length;i++){
         this.inventoryArray[i].appear();
+        this.inventoryArrayInteractable[i].appear();
     }
     this.inventoryIcon.events.onInputDown.removeAll();
     this.inventoryIcon.events.onInputDown.add(this.inventoryDisappear, this);
@@ -70,6 +73,7 @@ gameplayState.prototype.inventoryAppear = function(){
 gameplayState.prototype.inventoryDisappear = function(){
     for(i = 0; i < this.inventoryArray.length;i++){
         this.inventoryArray[i].disappear();
+        this.inventoryArrayInteractable[i].disappear();
     }
     this.inventoryIcon.events.onInputDown.removeAll();
     this.inventoryIcon.events.onInputDown.add(this.inventoryAppear, this);
@@ -77,7 +81,7 @@ gameplayState.prototype.inventoryDisappear = function(){
     // this.background.inputEnabled = false;
 };
 
-gameplayState.prototype.addInventory = function(nameArray){
+gameplayState.prototype.addInventory = function(nameArray,isInteractable){
     if(nameArray.length < 0){
         alert("WARNING: negative length array");
     }
@@ -87,7 +91,7 @@ gameplayState.prototype.addInventory = function(nameArray){
     let startingPosX = 450;
     let returnArray = new Array();
     for(i = 0; i < nameArray.length; i++){
-        returnArray.push(new InventoryClass((startingPosX+(200*i)),150,nameArray[i],this));
+        returnArray.push(new InventoryClass((startingPosX+(200*i)),150,nameArray[i],this,isInteractable));
     }
     return returnArray;
 };
