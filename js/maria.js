@@ -11,6 +11,7 @@ mariaState.prototype.create = function(){
     this.workplace.inputEnabled = true;
     game.add.sprite(0, 0, "sidebar");
     game.add.sprite(650, 760, "stove");
+    game.add.sprite(300, game.world.centerY+160, "recipebook");
     this.maria = game.add.sprite(game.world.centerX-50, game.world.centerY+50, "maria");
     this.maria.anchor.set(0, 1);
     this.maria.inputEnabled = true;
