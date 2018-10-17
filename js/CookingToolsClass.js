@@ -17,10 +17,11 @@ function CookingToolsClass(posX,posY,name,gameState){
 
 };
 
-CookingToolsClass.prototype.addPartRecipe = function(recipeArray, finname){
+CookingToolsClass.prototype.addPartRecipe = function(recipeArray, finname, animeName){
     //recipeArray should be an array which contains strings of names
     this.recipeArray = recipeArray;
     this.final_item=finname;
+    this.animeName = animeName;
 };
 
 

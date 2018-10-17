@@ -45,6 +45,7 @@ preloadState.prototype.preload = function(){
     game.load.image("dough_no_mix", "assets/art/dough_no_mix.png");
     game.load.image("stirring_bowl_fills_before_mixing", "assets/art/stirring_bowl_fills_before_mixing.png");
     game.load.audio("theme", "assets/music/music_apple.mp3");
+    game.load.spritesheet("mix_dough_anime", "assets/art/mix_dough.png", 1026,1125);
      
  
 };
