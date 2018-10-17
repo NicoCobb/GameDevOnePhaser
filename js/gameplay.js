@@ -45,11 +45,15 @@ gameplayState.prototype.create = function(){
             this.inventoryNameArray = ["apple", "butter", "flour", "salt", "sugar","cinnamon", "water"];
 
             var recipeSteps = [];
+            var stepSeven = new RecipeStep()
+            var stepSix = new RecipeStep(this.piePlate, ["dough"], "pieplate_raw");
+            var stepFive = new RecipeStep(this.piePlate, ["AHHHHHH***********************************"], "pieplate_fills");
             var stepFour = new RecipeStep(this.piePlate, ["dough"], "pieplate_dough");
             //possible extra step in here if there is time to add a mixing action
+            //split this one into smaller steps to show all the art?
             var stepThree = new RecipeStep(this.bowl, ["sugar", "salt", "cinnamon", "water", "apple_chunks"]);
             //possible extra step in here if there is time to add a slicing action
-            var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "");
+            var stepTwo = new RecipeStep(this.cuttingBoard, ["apple"], "cutting_board_apples");
             var stepOne = new RecipeStep(this.bowl, ["butter, flower, water"], "dough_no_mix");
             
 
@@ -81,12 +85,23 @@ gameplayState.prototype.render = function(){
 };
 
 gameplayState.prototype.recipeListener = function(){
-    let txt = "testing text.";
-    this.tempBubble = new RecipeBubbleClass(1000,350,txt,this);
+    this.recipebookDebug.disableInput();
+    this.tempBubble = new RecipeBubbleClass(800,250,this);
 };
 
 gameplayState.prototype.recipeBubbleDestroyer = function(){
+    this.recipebookDebug.enableInput();
     this.tempBubble.destroyAll();
+};
+
+gameplayState.prototype.recipebookTurnPage = function(para){
+    if (para === 0){
+        this.tempBubble.replaceBubble("apple_pie_recipe2");
+        this.tempBubble.resetCallback(para);
+    }else{
+        this.tempBubble.replaceBubble("apple_pie_recipe1");
+        this.tempBubble.resetCallback(para);
+    }
 };
 
 gameplayState.prototype.inventoryAppear = function(){
@@ -133,6 +148,12 @@ gameplayState.prototype.addInventory = function(nameArray,isInteractable = false
     return returnArray;
 };
 
+gameplayState.prototype.playAnimation = function(animeName) {
+    let temp = game.add.sprite(1500,0,3);
+    let anim = temp.animations.add(animeName);
+    anim.play(2,false,true);
+}
+
 gameplayState.prototype.inventoryListener = function(obj) {
     console.log("inventoryListener obj name: " + obj.name);
     this.tempName = obj.name;
@@ -140,13 +161,12 @@ gameplayState.prototype.inventoryListener = function(obj) {
     // console.log(this.tempName);
 };
 
-gameplayState.prototype.cookingToolsListener = function(obj) {
-    console.log("input up registered");
-    let result = obj.checkRecipe(this.tempName);
-    // obj.disableInput();
+// gameplayState.prototype.cookingToolsListener = function(obj) {
+//     let result = obj.checkRecipe(this.tempName);
+//     // obj.disableInput();
     
-    alert(result);
-};
+//     alert(result);
+// };
 
 
 
