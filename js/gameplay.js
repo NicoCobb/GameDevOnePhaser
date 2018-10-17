@@ -7,18 +7,21 @@ let gameplayState = function(){
 
 //game runs here
 gameplayState.prototype.create = function(){
+    this.music=game.add.audio("theme");
+    this.music.play();
     this.counter = 0
     this.cookingToolsArray = new Array();
     this.background = game.add.sprite(0,0,"main_background");
     // this.background.events.onInputDown.add(this.inventoryDisappear,this,1);
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
-    this.bowl = new CookingToolsClass(925,700,"stirring_bowl",this);
+    game.add.sprite(650, 755, "stove");
+    this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
+    this.pot = new CookingToolsClass(1145,810,"pot_e",this);
     let tempArray = ["apple", "sugar"];
-    
-    this.bowl.addPartRecipe(tempArray);
-    this.cookingToolsArray.push(this.bowl);
-    
+    let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
+    this.bowl.addPartRecipe(tempArray, "dough_no_mix");
+    //this.bowl.addPartRecipe(tempArray);
     
     this.recipebookDebug = new RecipeClass(525,900,this);
     
@@ -35,7 +38,7 @@ gameplayState.prototype.create = function(){
 
 //update function
 gameplayState.prototype.update = function(){
-    
+   
 };
 
 
@@ -90,10 +93,15 @@ gameplayState.prototype.addInventory = function(nameArray){
 };
 
 gameplayState.prototype.inventoryListener = function(name) {
-    
+    this.tempName = name;
+    this.bowl.enableInput();
 };
 
-
+gameplayState.prototype.cookingToolsListener = function(obj) {
+    let result = obj.checkRecipe(this.tempName);
+    this.bowl.disableInput();
+    alert(result);
+};
 
 
 
