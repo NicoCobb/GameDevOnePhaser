@@ -19,7 +19,7 @@ gameplayState.prototype.create = function(){
     // this.background.events.onInputDown.add(this.inventoryDisappear,this,1);
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
-    game.add.sprite(650, 755, "stove");
+    game.add.sprite(650, 760, "stove");
     this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
     this.pot = new CookingToolsClass(1145,810,"pot_e",this);
     let tempArray = ["flour", "sugar", "salt", "water"];
