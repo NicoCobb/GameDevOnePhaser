@@ -16,6 +16,7 @@ preloadState.prototype.preload = function(){
     game.load.image("dialoguebox_customer", "assets/art/dialoguebox_customer.png");
     game.load.image("dialoguebox_owner", "assets/art/dialoguebox_owner.png");
     game.load.image("dough", "assets/art/dough.png");
+    game.load.image("exit_button", "assets/art/exit_button.png");
     game.load.image("flour", "assets/art/flour.png");
     game.load.image("inventory_bar", "assets/art/inventory_bar.png");
     game.load.image("inventory_icon","assets/art/inventory_icon.png");
@@ -29,6 +30,7 @@ preloadState.prototype.preload = function(){
     game.load.image("pieplate_fills", "assets/art/pieplate_fills.png");
     game.load.image("pieplate_finished", "assets/art/pieplate_finished.png");
     game.load.image("pieplate_raw", "assets/art/pieplate_raw.png");
+    game.load.image("play_button", "assets/art/play_button.png");
     game.load.image("recipe_ui", "assets/art/recipe_ui.png");
     game.load.image("recipebook", "assets/art/recipebook.png");
     game.load.image("salt", "assets/art/salt.png");
@@ -36,6 +38,7 @@ preloadState.prototype.preload = function(){
     game.load.image("stirring_bowl", "assets/art/stirring_bowl.png");
     game.load.image("stove", "assets/art/stove.png");
     game.load.image("sugar", "assets/art/sugar.png");
+    game.load.image("title", "assets/art/title.png");
     game.load.image("water", "assets/art/water.png");
     game.load.image("workplace", "assets/art/workplace.png");
      
