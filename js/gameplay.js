@@ -13,8 +13,13 @@ gameplayState.prototype.create = function(){
     // this.background.events.onInputDown.add(this.inventoryDisappear,this,1);
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
-    this.bowl = new CookingToolsClass(1300,900,"stirring_bowl",this);
+    game.add.sprite(650, 755, "stove");
+    this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
+    this.pot = new CookingToolsClass(1145,810,"pot_e",this);
+    
     let tempArray = ["apple", "sugar"];
+    let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
+    this.bowl.addPartRecipe(tempArray);
     this.bowl.addPartRecipe(tempArray);
     
     this.recipebookDebug = new RecipeClass(525,900,this);
