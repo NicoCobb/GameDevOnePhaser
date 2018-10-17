@@ -51,9 +51,9 @@ gameplayState.prototype.create = function(){
 
             var recipeSteps = [];
             //*NOTE* need to add in generated ingredients
-            var stepSeven = new RecipeStep(this.stove, ["pieplate_raw"], "delete");
+            var stepSeven = new RecipeStep(this.stove, ["pieplate_raw"], "stove");
             recipeSteps.push(stepSeven);
-            var stepSix = new RecipeStep(this.piePlate, ["dough"], "pieplate_raw");
+            var stepSix = new RecipeStep(this.piePlate, ["dough"], "pieplate_raw", "pieplate_raw", "pieplate_raw");
             recipeSteps.push(stepSix);
             var stepFive = new RecipeStep(this.piePlate, ["apple_fills"] ,"pieplate_fills");
             recipeSteps.push(stepFive);
