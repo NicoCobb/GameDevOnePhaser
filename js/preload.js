@@ -7,8 +7,10 @@ let preloadState = function(){
 preloadState.prototype.preload = function(){
     //game.load.image("name", "filepath")
     //game.load.spritesheet("name", "filepath", x, y)
+    game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
     game.load.image("apple", "assets/art/apple.png");
     game.load.image("big_side_bar", "assets/art/big_side_bar.png");
+    game.load.image("boil_apple", "assets/art/boil_apple.png");
     game.load.image("business_man","assets/art/business_man.png");
     game.load.image("butter", "assets/art/butter.png");
     game.load.image("close_icon", "assets/art/close_icon.png");
@@ -25,6 +27,7 @@ preloadState.prototype.preload = function(){
     game.load.image("main_background", "assets/art/main_background.png");
     game.load.image("maria", "assets/art/maria.png");
     game.load.image("michael", "assets/art/michael.png");
+    game.load.image("open_book", "assets/art/open_book.png");
     game.load.image("pieplate", "assets/art/pieplate.png");
     game.load.image("pieplate_dough","assets/art/pieplate_dough.png");
     game.load.image("pieplate_fills", "assets/art/pieplate_fills.png");
