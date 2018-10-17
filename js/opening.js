@@ -2,7 +2,7 @@ let openingState = function(){
 
 };
 
-openingState.prototype.create = function() {
+openingState.prototype.create = function(){
     this.counter = 0;
 
     this.open_book = game.add.sprite(0, 0, "open_book");
@@ -16,10 +16,10 @@ openingState.prototype.create = function() {
         "Now, Patrick works to keep up the recipes of his family and keep the trees healthy, " +
         "but after bring one of his family's famous apple pies to a bake sale, " +
         "some have taken an interest in what makes his pies so good.", "yOU ARE FUCKED UP", "YOU ARE SUPER FUCKED UP"]
-    this.opening_image = ["photo1", "photo2"]
+    this.opening_image = ["photo1", "photo2", "photo3"]
 
     this.display_text(0);
-    let helper = function () {
+    let helper = function (){
         this.display_text(this.counter)
     };
     this.open_book.events.onInputDown.add(helper, this);
@@ -29,7 +29,7 @@ openingState.prototype.update = function(){
 
 };
 
-openingState.prototype.display_text = function(i) {
+openingState.prototype.display_text = function(i){
     if(i !== 0) {
         this.page_text.destroy();
         this.page_image.destroy();
@@ -38,8 +38,12 @@ openingState.prototype.display_text = function(i) {
     this.page_text = game.add.text(game.world.centerX+60, 125, text, {font: "60px Courier", fill: "#000000",
         fontWeight: "bold", wordWrap: true, wordWrapWidth: 800, lineSpacing: 10});
     this.page_text.lineSpacing = 10;
+
     let image = this.opening_image[i];
-    this.page_image = game.add.sprite(370, 70, image);
+    if(this.counter === 2) {
+        this.page_image = game.add.sprite(510, 270, image);
+    }
+    else { this.page_image = game.add.sprite(370, 70, image); }
 
     this.counter++;
     if(this.counter === 3) {

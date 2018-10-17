@@ -29,6 +29,7 @@ preloadState.prototype.preload = function(){
     game.load.image("open_book", "assets/art/open_book.png");
     game.load.image("photo1", "assets/art/photo1.png");
     game.load.image("photo2", "assets/art/photo2.png");
+    game.load.image("photo3", "assets/art/photo3.png");
     game.load.image("pieplate", "assets/art/pieplate.png");
     game.load.image("pieplate_dough","assets/art/pieplate_dough.png");
     game.load.image("pieplate_fills", "assets/art/pieplate_fills.png");
