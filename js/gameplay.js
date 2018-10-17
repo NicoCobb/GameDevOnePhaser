@@ -1,12 +1,16 @@
 // gameplayState constructor
 
 let gameplayState = function(){
-    let counter = 0;
+    //5 is the index of the last member of initial inventories
+    //all the inventories after this should be one-time used
+    let counter = 5;
     
 };
 
 //game runs here
 gameplayState.prototype.create = function(){
+    this.bowlRecipeArray = [["flour", "sugar", "salt", "water"],["dough", "apple"]];
+    
     this.music=game.add.audio("theme");
     this.music.play();
     this.counter = 0
@@ -18,9 +22,10 @@ gameplayState.prototype.create = function(){
     game.add.sprite(650, 755, "stove");
     this.bowl = new CookingToolsClass(1500,800,"stirring_bowl",this);
     this.pot = new CookingToolsClass(1145,810,"pot_e",this);
-    let tempArray = ["apple", "sugar"];
+    let tempArray = ["flour", "sugar", "salt", "water"];
+    let tempArray2 = ["dough", "apple"];
     let stoveIngrediants = ["cutapple", "sugar", "salt", "cinnamon", "water"];
-    this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation");
+    this.bowl.addPartRecipe(tempArray, "dough_no_mix", "mix_dough_animation","dough");
     //this.bowl.addPartRecipe(tempArray);
     
     this.recipebookDebug = new RecipeClass(525,900,this);
@@ -60,6 +65,7 @@ gameplayState.prototype.recipeBubbleDestroyer = function(){
 };
 
 gameplayState.prototype.inventoryAppear = function(){
+    this.inventoryBar = game.add.sprite(395,75,"inventory_bar");
     for(i = 0; i < this.inventoryArray.length;i++){
         this.inventoryArray[i].appear();
         this.inventoryArrayInteractable[i].appear();
@@ -75,6 +81,7 @@ gameplayState.prototype.inventoryDisappear = function(){
         this.inventoryArray[i].disappear();
         this.inventoryArrayInteractable[i].disappear();
     }
+    this.inventoryBar.destroy();
     this.inventoryIcon.events.onInputDown.removeAll();
     this.inventoryIcon.events.onInputDown.add(this.inventoryAppear, this);
     // this.inventoryIcon.inputEnabled = true;
@@ -88,16 +95,21 @@ gameplayState.prototype.addInventory = function(nameArray,isInteractable){
     if(nameArray.length === 0){
         alert("WARNING: zero length array");
     }
-    let startingPosX = 450;
+    let startingPosX = 552;
     let returnArray = new Array();
     for(i = 0; i < nameArray.length; i++){
-        returnArray.push(new InventoryClass((startingPosX+(200*i)),150,nameArray[i],this,isInteractable));
+        if(i <= 5){
+            returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, false));
+        }else{
+            returnArray.push(new InventoryClass((startingPosX+(198*i)),202,nameArray[i],this,isInteractable, true));
+        }
+        
     }
     return returnArray;
 };
 
-gameplayState.prototype.inventoryListener = function(name) {
-    this.tempName = name;
+gameplayState.prototype.inventoryListener = function(obj) {
+    this.tempName = obj.name;
     this.bowl.enableInput();
 };
 

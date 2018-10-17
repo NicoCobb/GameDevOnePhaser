@@ -1,7 +1,8 @@
 //Inventory Class constructer
 
-function InventoryClass(posX,posY,name,gameState,isInteractable, destroyAfterUse){
+function InventoryClass(posX,posY,name,gameState,isInteractable,destroyAfterUse){
     //store the values and references
+    //destroyAfterUse is an boolean
     this.posX = posX;
     this.posY = posY;
     this.name = name;
