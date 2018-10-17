@@ -36,7 +36,7 @@ CookingToolsClass.prototype.checkFullInventory = function(){
         this.sprite.destroy();
         this.sprite=game.add.sprite(this.posX,this.posY,this.name);
         this.sprite.anchor.set(0.5);
-        alert("working");
+        // alert("working");
         
         let temp = game.add.sprite(1500,0,this.animeName);
         let anim = temp.animations.add(this.animeName);
@@ -61,13 +61,13 @@ CookingToolsClass.prototype.checkRecipe = function(inventoryName){
     }
     for(i = 0; i < this.recipeArray.length; i++){
         if (inventoryName === this.recipeArray[i]){
-            alert("you choose:" + inventoryName +" and deleted:" + this.recipeArray[i])
+            // alert("you choose:" + inventoryName +" and deleted:" + this.recipeArray[i])
             this.sprite.destroy();
             this.sprite=game.add.sprite(this.posX,this.posY,this.final_item);
             this.sprite.anchor.set(0.5);
             this.sprite.events.onInputDown.add(this.callback, this);
             this.recipeArray.splice(i,1);
-            alert(this.recipeArray.length)
+            //alert(this.recipeArray.length)
             this.checkFullInventory();
             return true;
         }

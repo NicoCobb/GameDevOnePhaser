@@ -31,7 +31,9 @@ preloadState.prototype.preload = function(){
     game.load.image("main_background", "assets/art/main_background.png");
     game.load.image("maria", "assets/art/maria.png");
     game.load.image("michael", "assets/art/michael.png");
+    game.load.image("name_businessman", "assets/art/name_businessman.png");
     game.load.image("name_maria", "assets/art/name_maria.png");
+    game.load.image("name_joshua", "assets/art/name_joshua.png");
     game.load.image("name_patrick", "assets/art/name_patrick.png");
     game.load.image("open_book", "assets/art/open_book.png");
     game.load.image("photo1", "assets/art/photo1.png");

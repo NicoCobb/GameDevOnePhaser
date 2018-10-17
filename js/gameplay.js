@@ -10,7 +10,7 @@ let gameplayState = function(){
 
 //game runs here
 gameplayState.prototype.create = function(){
-    this.bowlRecipeArray = [["flour", "sugar", "salt", "water"],["dough", "apple"]];
+    this.bowlRecipeArray = [["flour", "butter", "water"],["dough", "apple"]];
     
     //these objects are the same in all levels
     this.music=game.add.audio("theme");
@@ -21,7 +21,7 @@ gameplayState.prototype.create = function(){
     this.workplace = game.add.sprite(0,0,"workplace");
     game.add.sprite(0,0,"sidebar");
     game.add.sprite(650, 760, "stove");
-    this.recipebookDebug = new RecipeBook(525,900,this);
+    this.recipebookDebug = new RecipeBook(300, game.world.centerY+160, this);
     this.inventoryIcon = game.add.sprite(1270,50,"inventory_icon");
     this.inventoryIcon.anchor.set(0.5);
     this.inventoryIcon.inputEnabled = true;
@@ -74,7 +74,7 @@ gameplayState.prototype.render = function(){
 
 gameplayState.prototype.recipeListener = function(){
     this.recipebookDebug.disableInput();
-    this.tempBubble = new RecipeBubbleClass(800,250,this);
+    this.tempBubble = new RecipeBubbleClass(game.world.centerX+150,　game.world.centerY,　this);
 };
 
 gameplayState.prototype.recipeBubbleDestroyer = function(){
@@ -147,8 +147,8 @@ gameplayState.prototype.cookingToolsListener = function(obj) {
     console.log("input up registered");
     let result = obj.checkRecipe(this.tempName);
     // obj.disableInput();
-    
-    alert(result);
+
+    //alert(result);
 };
 
 
